@@ -3,7 +3,11 @@ GreenTrace — ML Carbon Footprint Analyzer
 FastAPI backend entry point.
 """
 
+import matplotlib
+matplotlib.use("Agg")
+
 import os
+import asyncio
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -22,11 +26,16 @@ from routers.report  import router as report_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Ingest green-AI documents into ChromaDB on first run
-    try:
-        ingest_documents()
-    except Exception as e:
-        print(f"[WARN] RAG ingestion failed (non-fatal): {e}")
+    # Ingest green-AI documents into ChromaDB on first run (in background so it doesn't block startup)
+    def run_ingestion():
+        try:
+            ingest_documents()
+        except Exception as e:
+            print(f"[WARN] RAG ingestion failed (non-fatal): {e}")
+
+    # Fire and forget in a background thread
+    asyncio.create_task(asyncio.to_thread(run_ingestion))
+    
     yield
     # Cleanup on shutdown (nothing to do currently)
 
