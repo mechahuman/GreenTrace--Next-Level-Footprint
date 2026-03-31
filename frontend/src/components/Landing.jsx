@@ -37,9 +37,7 @@ export default function Landing({ onProceed, onAbout, onResearch }) {
 
         {/* Top Right Buttons */}
         <div className="absolute top-8 right-8 z-20 flex gap-3 items-center">
-          <div className="px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm font-mono text-gray-400">
-            v1.0
-          </div>
+          
           <button
             onClick={onResearch}
             className="px-5 py-2.5 rounded-lg text-sm font-mono font-medium text-gray-300 hover:text-white transition-all
