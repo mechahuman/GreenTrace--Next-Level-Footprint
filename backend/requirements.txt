@@ -17,3 +17,11 @@ python-dotenv>=1.0.1
 aiofiles>=23.2.1
 jinja2>=3.1.4
 pandas>=2.2.2
+
+scikit-learn>=1.4.2
+seaborn>=0.13.2
+scipy>=1.13.0
+statsmodels>=0.14.2
+yfinance>=0.2.38
+plotly>=5.22.0
+xgboost>=2.0.3
