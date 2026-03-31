@@ -291,7 +291,7 @@ export default function Research({ onBack }) {
             <span className="font-mono">Back</span>
           </button>
           <div className="flex items-center gap-3">
-            <img src="/favicon.png" alt="GreenTrace" className="w-7 h-7 rounded-full object-contain" />
+            <img src="/favicon.png" alt="GreenTrace" className="w-7 h-7 object-contain" />
             <span className="font-syne font-bold text-white text-lg tracking-tight">GreenTrace</span>
           </div>
           <div className="px-4 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-500">v1.0</div>

@@ -146,7 +146,7 @@ function App() {
                 <img
                   src="/favicon.png"
                   alt="GreenTrace Logo"
-                  className="relative w-9 h-9 rounded-full object-contain bg-black/40 border border-white/5 shadow-2xl transition-transform duration-500 group-hover:scale-110"
+                  className="relative w-9 h-9 object-contain shadow-2xl transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
               <h1 className="text-2xl font-bold font-syne text-white tracking-tight">GreenTrace</h1>
