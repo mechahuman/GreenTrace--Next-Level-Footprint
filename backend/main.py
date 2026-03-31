@@ -57,6 +57,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",   # Vite dev
         "http://localhost:3000",   # Alt dev
+        "https://green-trace-next-level-footprint.vercel.app",
         os.getenv("FRONTEND_URL", "http://localhost:5173"),
     ],
     allow_credentials=True,
