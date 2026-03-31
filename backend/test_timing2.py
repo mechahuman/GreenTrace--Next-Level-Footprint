@@ -1,0 +1,23 @@
+import nbformat
+from nbconvert.preprocessors import ExecutePreprocessor
+from datetime import datetime
+import json
+
+nb_node = nbformat.from_dict({
+    "cells": [
+        {"cell_type": "code", "execution_count": None, "metadata": {}, "source": "import time; time.sleep(0.5)", "outputs": []},
+        {"cell_type": "code", "execution_count": None, "metadata": {}, "source": "x = 10", "outputs": []}
+    ],
+    "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"}},
+    "nbformat": 4,
+    "nbformat_minor": 4,
+})
+
+ep = ExecutePreprocessor(timeout=60, kernel_name='python3', record_timing=True)
+ep.preprocess(nb_node, {'metadata': {'path': '.'}})
+
+for i, cell in enumerate(nb_node.cells):
+    meta = cell.metadata.get("execution", {})
+    start = meta.get("iopub.execute_input", "")
+    end = meta.get("iopub.status.idle", "")
+    print(f"Cell {i} execution. start: {start}, end: {end}")

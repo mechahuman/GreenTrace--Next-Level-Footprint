@@ -1,0 +1,67 @@
+# Root .gitignore for GreenTrace Project
+
+# Logs and debug files
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node modules (Frontend)
+node_modules
+frontend/node_modules
+
+# Python virtual environment (Backend)
+venv
+backend/venv
+.venv
+backend/.venv
+
+# Environment variables (Sensitive)
+.env
+backend/.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build artifacts
+dist
+dist-ssr
+frontend/dist
+frontend/dist-ssr
+*.local
+
+# Database (ChromaDB)
+chroma_db
+backend/chroma_db
+
+# Python caches
+__pycache__
+backend/__pycache__
+*.py[cod]
+*$py.class
+.pytest_cache
+
+# Operating system files
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Editor directories
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# Temporary/Output files
+backend/out.txt
+backend/out2.txt
+backend/out_test.txt
+backend/results.txt
+backend/test_output.txt
+testing/dataset
