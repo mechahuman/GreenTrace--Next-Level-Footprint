@@ -18,7 +18,7 @@ from core.static_analyzer import analyze_notebook
 from core.notebook_runner import run_notebook, estimate_from_static
 from core.carbon_calculator import build_summary
 from core.path_resolver import prepare_execution_env
-from rag.retriever import retrieve_chunks
+
 from rag.groq_client import generate_suggestions, generate_interpretation
 import nbformat
 
@@ -170,10 +170,9 @@ def _process_analysis(
             execution_note=execution_note,
         )
 
-        # ── RAG + Groq suggestions ───────────────────────────────────────────
+        # ── Groq suggestions ───────────────────────────────────────────
         try:
-            chunks      = retrieve_chunks(static, summary, n_results=6)
-            suggestions = generate_suggestions(static, summary, hw, chunks)
+            suggestions = generate_suggestions(static, summary, hw)
             suggestions.job_id = job_id
         except Exception as sug_err:
             from models.schemas import Suggestion, SuggestionsResult

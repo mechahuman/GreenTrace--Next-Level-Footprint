@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from rag.ingestion import ingest_documents
+
 from routers.analyze import router as analyze_router
 from routers.report  import router as report_router
 
@@ -26,16 +26,6 @@ from routers.report  import router as report_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Ingest green-AI documents into ChromaDB on first run (in background so it doesn't block startup)
-    def run_ingestion():
-        try:
-            ingest_documents()
-        except Exception as e:
-            print(f"[WARN] RAG ingestion failed (non-fatal): {e}")
-
-    # Fire and forget in a background thread
-    asyncio.create_task(asyncio.to_thread(run_ingestion))
-    
     yield
     # Cleanup on shutdown (nothing to do currently)
 

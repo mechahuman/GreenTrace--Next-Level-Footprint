@@ -20,8 +20,7 @@ Your role is to analyze a user's ML notebook and generate specific, actionable s
 
 You will receive:
 1. A summary of the notebook's carbon emissions and runtime profile.
-2. Relevant reference documents about ML efficiency and green AI practices.
-3. Static analysis of the notebook (framework, model type, detected patterns).
+2. Static analysis of the notebook (framework, model type, detected patterns).
 
 You must respond ONLY with a valid JSON object in the following exact format — no markdown, no explanation, no preamble:
 {
@@ -51,12 +50,7 @@ def _build_user_prompt(
     static_analysis,
     summary,
     hardware_info,
-    chunks: List[Dict],
 ) -> str:
-    chunks_text = "\n\n---\n\n".join(
-        f"[Document: {c['title']}]\n{c['content'][:800]}"
-        for c in chunks
-    )
 
     detected = static_analysis.detected_patterns or []
     training_cells = len(static_analysis.training_cell_indices)
@@ -86,10 +80,6 @@ def _build_user_prompt(
 **GPU:** {hardware_info.gpu_model or 'not detected'}
 **RAM:** {hardware_info.ram_gb} GB
 
-## Reference Documents
-
-{chunks_text}
-
 ---
 
 Based on the above, generate specific carbon reduction suggestions for this notebook as a JSON object.
@@ -100,7 +90,6 @@ def generate_suggestions(
     static_analysis,
     summary,
     hardware_info,
-    chunks: List[Dict],
 ) -> SuggestionsResult:
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
@@ -116,7 +105,7 @@ def generate_suggestions(
         messages=[
             {"role": "system", "content": _build_system_prompt()},
             {"role": "user",   "content": _build_user_prompt(
-                static_analysis, summary, hardware_info, chunks
+                static_analysis, summary, hardware_info
             )},
         ],
         temperature=0.4,
