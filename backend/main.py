@@ -66,3 +66,11 @@ async def root():
         "version": "1.0.0",
         "docs":    "/docs",
     }
+
+if __name__ == "__main__":
+    import uvicorn
+    # Render sets the PORT environment variable
+    # If it's not set (e.g. running locally), default to 8000
+    port = int(os.environ.get("PORT", 8000))
+    # Binding to 0.0.0.0 ensures the app is accessible outside the local container
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=False)
