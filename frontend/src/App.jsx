@@ -4,10 +4,14 @@ import Landing from './components/Landing';
 import UploadZone from './components/UploadZone';
 import Dashboard from './components/Dashboard';
 import CustomCursor from './components/CustomCursor';
+import AboutUs from './components/AboutUs';
+import Research from './components/Research';
 
 
 function App() {
   const [showLanding, setShowLanding] = useState(true);
+  const [showAbout, setShowAbout] = useState(false);
+  const [showResearch, setShowResearch] = useState(false);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -89,13 +93,37 @@ function App() {
     }
   };
 
+  // Research page
+  if (showResearch) {
+    return (
+      <>
+        <CustomCursor />
+        <Research onBack={() => setShowResearch(false)} />
+      </>
+    );
+  }
+
+  // About Us page
+  if (showAbout) {
+    return (
+      <>
+        <CustomCursor />
+        <AboutUs onBack={() => setShowAbout(false)} />
+      </>
+    );
+  }
+
   if (showLanding) {
     return (
       <>
         <CustomCursor />
         <div className="min-h-screen overflow-hidden flex items-center justify-center p-4" style={{ backgroundColor: '#030303' }}>
           <div className="app-shell w-full max-w-7xl relative mx-auto h-[90vh]">
-            <Landing onProceed={() => setShowLanding(false)} />
+            <Landing
+              onProceed={() => setShowLanding(false)}
+              onAbout={() => setShowAbout(true)}
+              onResearch={() => setShowResearch(true)}
+            />
           </div>
         </div>
       </>
@@ -123,14 +151,28 @@ function App() {
               </div>
               <h1 className="text-2xl font-bold font-syne text-white tracking-tight">GreenTrace</h1>
             </div>
-            {result && (
+            <div className="flex items-center gap-4">
               <button
-                onClick={() => setResult(null)}
-                className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                onClick={() => setShowResearch(true)}
+                className="text-sm font-medium text-gray-500 hover:text-gray-300 transition-colors"
               >
-                Analyze New Project
+                Research
               </button>
-            )}
+              <button
+                onClick={() => setShowAbout(true)}
+                className="text-sm font-medium text-gray-500 hover:text-gray-300 transition-colors"
+              >
+                About Us
+              </button>
+              {result && (
+                <button
+                  onClick={() => setResult(null)}
+                  className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                >
+                  Analyze New Project
+                </button>
+              )}
+            </div>
           </div>
 
           {error && (
@@ -154,3 +196,4 @@ function App() {
 }
 
 export default App;
+

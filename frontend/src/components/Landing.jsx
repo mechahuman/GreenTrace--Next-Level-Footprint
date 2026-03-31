@@ -1,7 +1,7 @@
 import React from 'react';
 import FluidSimulation from './FluidSimulation';
 
-export default function Landing({ onProceed }) {
+export default function Landing({ onProceed, onAbout, onResearch }) {
   return (
     <div className="flex flex-col md:flex-row w-full h-[85vh] animate-fade-in relative overflow-hidden">
       
@@ -36,13 +36,27 @@ export default function Landing({ onProceed }) {
         </div>
 
         {/* Top Right Buttons */}
-        <div className="absolute top-8 right-8 z-20 flex gap-4">
+        <div className="absolute top-8 right-8 z-20 flex gap-3 items-center">
           <div className="px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm font-mono text-gray-400">
             v1.0
           </div>
           <button
+            onClick={onResearch}
+            className="px-5 py-2.5 rounded-lg text-sm font-mono font-medium text-gray-300 hover:text-white transition-all
+              bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20"
+          >
+            Research
+          </button>
+          <button
+            onClick={onAbout}
+            className="px-5 py-2.5 rounded-lg text-sm font-mono font-medium text-gray-300 hover:text-white transition-all
+              bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20"
+          >
+            About Us
+          </button>
+          <button
             onClick={onProceed}
-            className="px-6 py-2.5 rounded-lg text-sm font-sans font-semibold text-white transition-all
+            className="px-6 py-2.5 rounded-lg text-sm font-mono text-white transition-all
               bg-purple-800/60 hover:bg-purple-600/80 border border-purple-500/30 hover:border-purple-400/60
               shadow-[0_0_20px_rgba(168,85,247,0.2)] hover:shadow-[0_0_30px_rgba(168,85,247,0.4)]"
           >
@@ -70,13 +84,27 @@ export default function Landing({ onProceed }) {
         </div>
 
         {/* Mobile CTA */}
-        <div className="mt-12 mx-auto md:hidden z-10">
+        <div className="mt-12 mx-auto md:hidden z-10 flex flex-col gap-3 items-center">
           <button
             onClick={onProceed}
             className="flex items-center px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white font-medium transition-all"
           >
             Analyze Project →
           </button>
+          <div className="flex gap-4">
+            <button
+              onClick={onResearch}
+              className="flex items-center px-6 py-3 text-gray-400 hover:text-white text-sm transition-colors"
+            >
+              Research
+            </button>
+            <button
+              onClick={onAbout}
+              className="flex items-center px-6 py-3 text-gray-400 hover:text-white text-sm transition-colors"
+            >
+              About Us
+            </button>
+          </div>
         </div>
       </div>
     </div>

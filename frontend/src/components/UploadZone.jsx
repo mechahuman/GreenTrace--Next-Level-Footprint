@@ -135,7 +135,7 @@ export default function UploadZone({ onAnalyze, loading }) {
   return (
     <div className="w-full max-w-3xl mx-auto animate-slide-up flex flex-col justify-center min-h-[60vh]">
       <div className="mb-10">
-        <h2 className="text-4xl md:text-5xl font-syne font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-500 tracking-tighter">
+        <h2 className="text-4xl md:text-5xl font-syne font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-purple-400 to-purple-600 tracking-tighter">
           Analysis Configuration
         </h2>
         <p className="text-gray-500 font-mono text-xs mt-4 uppercase tracking-widest">Upload Source Files</p>
