@@ -110,7 +110,7 @@ export default function Dashboard({ data }) {
   const { summary, cell_breakdown, static_analysis, hardware_info } = analysis;
 
   const downloadReport = () =>
-    window.open(`http://localhost:8000/api/report/${job_id}`, '_blank');
+    window.open(`${import.meta.env.VITE_API_URL}/api/report/${job_id}`, '_blank');
 
   // Determine display unit for CO₂ globally so chart + KPI use same scale
   const { value: totalCO2Val, unit: totalCO2Unit } = fmtCO2(summary.total_co2_grams);

@@ -37,7 +37,7 @@ function App() {
       formData.append('region', payload.region);
       formData.append('run_live', payload.runLive);
 
-      const response = await axios.post('http://localhost:8000/api/analyze', formData, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/analyze`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -46,7 +46,7 @@ function App() {
         
         const pollInterval = setInterval(async () => {
           try {
-            const statusRes = await axios.get(`http://localhost:8000/api/status/${jobId}`);
+            const statusRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/status/${jobId}`);
             const jobData = statusRes.data;
             
             if (jobData.status === 'completed') {
