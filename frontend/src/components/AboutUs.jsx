@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, Zap, Activity, Shield, Cpu, Leaf, FileText, ChevronDown, Star, Globe, Lock, TrendingUp } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 /* ─── Animated counter hook ─────────────────────────────────────────────── */
 function useCountUp(target, duration = 1800, active = false) {
@@ -220,7 +221,7 @@ export default function AboutUs({ onBack }) {
             <span className="font-mono">Back</span>
           </button>
           <div className="flex items-center gap-3">
-            <img src="/favicon.png" alt="GreenTrace" className="w-7 h-7 object-contain" />
+            <img src={logo} alt="GreenTrace" className="w-7 h-7 object-contain" />
             <span className="font-syne font-bold text-white text-lg tracking-tight">GreenTrace</span>
           </div>
           <div className="px-4 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-500">v1.0</div>

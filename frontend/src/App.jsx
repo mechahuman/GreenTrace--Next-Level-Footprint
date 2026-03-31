@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import CustomCursor from './components/CustomCursor';
 import AboutUs from './components/AboutUs';
 import Research from './components/Research';
+import logo from './assets/logo.png';
 
 
 function App() {
@@ -144,7 +145,7 @@ function App() {
               <div className="relative">
                 <div className="absolute -inset-1 bg-green-500/20 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
                 <img
-                  src="/favicon.png"
+                  src={logo}
                   alt="GreenTrace Logo"
                   className="relative w-9 h-9 object-contain shadow-2xl transition-transform duration-500 group-hover:scale-110"
                 />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { UploadCloud, File, Zap, Server, Folder, ChevronDown, Check } from 'lucide-react';
 import FluidSimulation from './FluidSimulation';
+import logo from '../assets/logo.png';
 
 const REGIONS = [
   { code: 'IND', label: 'India', intensity: '708 g/kWh', flag: '🇮🇳' },
@@ -106,7 +107,7 @@ export default function UploadZone({ onAnalyze, loading }) {
             <div className="relative w-24 h-24">
               <div className="absolute inset-0 bg-green-500/20 rounded-full blur-xl animate-pulse-slow"></div>
               <img
-                src="/favicon.png"
+                src={logo}
                 alt="GreenTrace"
                 className="relative w-full h-full object-contain drop-shadow-[0_0_20px_rgba(34,197,94,0.4)]"
               />
